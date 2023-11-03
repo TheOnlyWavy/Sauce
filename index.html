@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>L-Ratio</title>
+    <link rel="stylesheet" type="text/css" href="mainstyles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main_body_wrapper">
+      <div class="another_wrapper">
+        <div class="main_grid_wrapper">
+          <div>
+            <div class="profile_picture_wrapper">
+              <img
+                class="profile_picture"
+                src="https://avatars.githubusercontent.com/u/54047268?v=4"
+              />
+            </div>
+          </div>
+          <div class="information_wrapper">
+            <div class="about_me_wrapper">
+              <h2 class="about_me_heading">About me</h2>
+              <p class="about_me_p">
+                I'm a conisuerrier about the fine arts of coding.
+                <br />
+                <br />
+
+                Hawks are one of my favorite animals
+              </p>
+            </div>
+            <div class="media_links_wrapper">
+              <hr class="rounded" />
+              <h3 class="media_links_heading">Social Media Links</h3>
+              <div class="media_clickable_wrapper">
+                <a
+                  href="https://github.com/L-Ratio"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/919/919847.png"
+                  />
+                </a>
+                <a
+                  href="https://discord.gg/Xn7UUQUHbN"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="another_discord_name_wrapper">
+            <div class="discord_name_wrapper">
+              <h3 class="discord_name">Hawk#4872</h3>
+            </div>
+          </div>
+          <div class="emptyspace_wrapper" />
+        </div>
+      </div>
+      <div class="stars" onload="addStarsToBackground()"></div>
+    </div>
+    <script>
+      // Get the background element
+      const background = document.querySelector(".main_body_wrapper");
+
+      // Create an array of star sizes
+      const starSizes = ["small", "medium", "large"];
+
+      // Create a function to generate a random star size
+      function getRandomStarSize() {
+        return starSizes[Math.floor(Math.random() * starSizes.length)];
+      }
+
+      // Create a function to generate a random star position
+      function getRandomStarPosition() {
+        const x = Math.floor(Math.random() * window.innerWidth);
+        const y = Math.floor(Math.random() * window.innerHeight);
+        return { x, y };
+      }
+
+      // Create a function to generate a star element
+      function createStar() {
+        const star = document.createElement("div");
+        star.classList.add("star", getRandomStarSize());
+        const { x, y } = getRandomStarPosition();
+        star.style.left = `${x}px`;
+        star.style.top = `${y}px`;
+        star.style.transition = "opacity 5s ease-in-out";
+        star.style.boxShadow = "0 0 15px 1px #fff";
+        setTimeout(() => {
+          setInterval(() => {
+            if (Math.random() > 0.5) {
+              star.style.opacity = Math.random();
+            }
+          }, Math.floor(Math.random() * 10000) + 5000);
+        }, Math.floor(Math.random() * 5000));
+        return star;
+      }
+
+      // Create a function to add stars to the background
+      function addStarsToBackground() {
+        for (let i = 0; i < 50; i++) {
+          const star = createStar();
+          background.appendChild(star);
+        }
+      }
+      addStarsToBackground();
+    </script>
+  </body>
+</html>
